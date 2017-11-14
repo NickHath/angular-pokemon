@@ -7,10 +7,37 @@
   </head>
   <body data-ng-controller="listCtrl">
     {{ name }}      
-    <input data-ng-model="name"/>   
-       
+    <button data-ng-click="editing = !editing">{{ (editing? 'Hide': 'Show') }} New Card</button>
+    <div data-ng-show="editing">
+      <input data-ng-model="newCard.name" placeholder="Name"/>
+      <input data-ng-model="newCard.type" placeholder="Type"/> 
+      <input data-ng-model="newCard.url" placeholder="URL"/>
+      <input data-ng-model="newCard.stats.hp" type="number" placeholder="HP"/>
+      <input data-ng-model="newCard.stats.atk" type="number" placeholder="Attack"/>
+      <input data-ng-model="newCard.stats.def" type="number" placeholder="Defense"/>
+      <button data-ng-click="addCard(newCard)">Add Card</button>
+      <div class="card">
+          <div class="name">{{ newCard.name }}</div>
+          <!--  string concatenation for url(newCard.url) -->
+          <div class="picture" data-ng-style="{backgroundImage: 'url(' + newCard.url + ')'}">
+            <!-- <img src="{{ newCard.url }}" /> -->
+          </div>
+          <div class="stats">
+            {{ newCard.stats.hp }} <br/>
+            {{ newCard.stats.atk }} <br/>
+            {{ newCard.stats.def }}
+          </div>
+        </div>
+    </div>
+
+    <!-- <input data-ng-model="myFilter" placeholder="Filter"/>    -->
+    <p>Search</p>
+    <input data-ng-model="myFilter.name" placeholder="Name"/>
+    <input data-ng-model="myFilter.type" placeholder="Type"/>
+    <br/>
+
     <div class="cardList">
-      <div class="card" data-ng-repeat="card in cards">
+      <div class="card" data-ng-repeat="card in cards | filter : myFilter">
         <div class="name">{{ card.name }}</div>
         <!--  string concatenation for url(card.url) -->
         <div class="picture" data-ng-style="{backgroundImage: 'url(' + card.url + ')'}">

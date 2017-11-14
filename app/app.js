@@ -22,5 +22,8 @@ angular.module('pokemon', []).controller('listCtrl', function($scope) {
     {name:'Ekans',url:'http://clipart.toonarific.com/data/media/11/pokemon023.gif'
     ,type:'poison', stats:{"hp":271,"atk":27,"def":44}}
   ];
-  
+  $scope.addCard = function(newCard) {
+    $scope.cards.push(newCard);
+    $scope.newCard = {};
+  }
 });
