@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="pokemon">
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
-    
+  <body data-ng-controller="listCtrl">
+
+    <input data-ng-model="name"/>      
+
+    {{ name }}
+    <div class="card">
+      <div class="name">{{ card.name }}</div>
+      <!--  string concatenation for url(card.url) -->
+      <div class="picture" data-ng-style="{backgroundImage: 'url(' + card.url + ')'}">
+        <!-- <img src="{{ card.url }}" /> -->
+      </div>
+      <div class="stats">
+        {{ card.stats.hp }} <br/>
+        {{ card.stats.atk }} <br/>
+        {{ card.stats.def }}
+    </div>
+    </div>
+
     <!-- angular cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js" charset="utf-8"></script>  
-    <script src="app/app.js" charset="utf-8></script>
+    <script src="app/app.js" charset="utf-8"></script>
   </body>
 </html>
