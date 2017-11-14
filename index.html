@@ -37,7 +37,10 @@
     <br/>
 
     <div class="cardList">
-      <div class="card" data-ng-repeat="card in cards | filter : myFilter">
+      <div class="card" 
+           data-ng-class="{ selected: selected }"
+           data-ng-click="selected = !selected" 
+           data-ng-repeat="card in cards | filter : myFilter">
         <div class="name">{{ card.name }}</div>
         <!--  string concatenation for url(card.url) -->
         <div class="picture" data-ng-style="{backgroundImage: 'url(' + card.url + ')'}">
